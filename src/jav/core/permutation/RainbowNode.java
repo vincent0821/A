@@ -66,12 +66,14 @@ public class RainbowNode {
         Node L2 =  new Node("L2");
         Node L3 =  new Node("L3");
         Node L4 =  new Node("L4");
+        Node L5 = new Node("L5");
         p1.addChild(c1);
         p1.addChild(c2);
         c1.addChild(L1);
         c1.addChild(L2);
         c2.addChild(L3);
         c2.addChild(L4);
+        c2.addChild(L5);
         
         List<Node> root = new ArrayList<>();
         root.add(p1);
