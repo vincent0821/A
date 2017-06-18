@@ -6,10 +6,10 @@ import java.util.List;
 /**
  * Created by gongkuaikuai on 2017/6/17.
  */
-public class Node {
-    Node parent;
-    List<Node> children = new ArrayList<>();
-    String name;
+public class Node implements Cloneable{
+    private Node parent;
+    private List<Node> children = new ArrayList<>();
+    private String name;
 
     public Node(String name){
         this.name = name;
@@ -57,8 +57,32 @@ public class Node {
         arr.set(i1, temp);
     }
 
+    public List<Node> getChildren() {
+        return children;
+    }
+
+    public Node getParent() {
+        return parent;
+    }
+
     @Override
     public String toString() {
         return name;
+    }
+
+    public void print(){
+        traversePrint(this);
+    }
+
+    private void traversePrint(Node node) {
+        System.out.print(node+" ");
+        for(Node child : node.getChildren()){
+            traversePrint(child);
+        }
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }
