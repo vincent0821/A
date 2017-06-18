@@ -8,10 +8,10 @@ import java.util.List;
 public class Transfer {
     Node target;
     Node orginRoot;
-    int pathNum = 0;
+    int pathNum = 1;
 
     Node transferRainbowTreePathToNodeTree(List<RainbowNode> rainbowTreePath) throws Exception {
-        RainbowNode rainbowRoot = rainbowTreePath.get(pathNum);
+        RainbowNode rainbowRoot = rainbowTreePath.get(0);
         if (rainbowRoot.getNodes().size() == 0) {
             return null;
         }
@@ -19,16 +19,19 @@ public class Transfer {
             throw new Exception("无根节点");
         }
         orginRoot = rainbowRoot.getNodes().get(0);
-        target = (Node) orginRoot.clone();
+        target = orginRoot.copy();
         recuirse(orginRoot, target, rainbowTreePath);
-        return orginRoot;
+        return target;
     }
 
     private void recuirse(Node originParentNode, Node newParentNode, List<RainbowNode> rainbowTreePath) throws CloneNotSupportedException {
+        if(pathNum==rainbowTreePath.size()){
+            return;
+        }
         RainbowNode rainbowNode = rainbowTreePath.get(pathNum);
         for (Node orginNode : rainbowNode.getNodes()) {
             if (orginNode.getParent() == originParentNode) {
-                Node newNode = (Node) orginNode.clone();
+                Node newNode = orginNode.copy();
                 newParentNode.addChild(newNode);
                 pathNum++;
                 recuirse(orginNode,newNode,rainbowTreePath);

@@ -118,11 +118,12 @@ public class RainbowNode {
         List<Node> root = new ArrayList<>();
         root.add(p1);
         RainbowNode rainbowNode = new RainbowNode(root);
+
+        List<Node> allPolicys = new ArrayList<>();
         for(List<RainbowNode> aPath : rainbowNode.allNodePaths()){
             new Transfer().transferRainbowTreePathToNodeTree(aPath).print();
             System.out.println();
         }
-
     }
 
 }

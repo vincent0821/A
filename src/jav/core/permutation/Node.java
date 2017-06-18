@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by gongkuaikuai on 2017/6/17.
  */
-public class Node implements Cloneable{
+public class Node{
     private Node parent;
     private List<Node> children = new ArrayList<>();
     private String name;
@@ -81,8 +81,8 @@ public class Node implements Cloneable{
         }
     }
 
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    public Node copy(){
+        Node node = new Node(this.name);
+        return node;
     }
 }
